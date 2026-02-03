@@ -18,7 +18,7 @@
 // تحديث عداد السلة تلقائياً من endpoint
 document.addEventListener('DOMContentLoaded', function(){
     function updateCartCount(){
-        fetch('/php1/cart_count.php', {cache: 'no-store'})
+        fetch((window.APP_BASE || '') + '/cart_count.php', {cache: 'no-store'})
             .then(r => r.text())
             .then(count => {
                 document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 
 <!-- Site JS -->
-<script defer src="/php1/assets/js/site.js"></script>
-<script defer src="/php1/assets/js/pjax.js"></script>
+<script defer src="<?= asset_path('assets/js/site.js') ?>"></script>
+<script defer src="<?= asset_path('assets/js/pjax.js') ?>"></script>
 
 
