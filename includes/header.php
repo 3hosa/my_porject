@@ -28,6 +28,10 @@ function asset_path($path) {
 <!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-jQG6k6Vh9+K0e2uZqGZ8Y3Yj6Jq2Q1q9YV1z8Zl+QY5G9YdK1c9t9E2ZKJ1z9K1Q6e5a2Y3Z4a5b6c7d8e9f0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="<?= asset_path('assets/css/style.css') ?>">
+<script>
+    // JS-visible base path ('' or '/php1' etc.)
+    window.APP_BASE = '<?= $base ?>';
+</script>
 </head>
 <body>
 
