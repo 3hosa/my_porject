@@ -88,7 +88,7 @@ function siteInit(){
             btn.textContent = 'جاري الإضافة...';
             btn.disabled = true;
 
-            fetch('/php1/add_to_cart.php', {
+            fetch((window.APP_BASE || '') + '/add_to_cart.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -96,8 +96,8 @@ function siteInit(){
                 body: 'id=' + encodeURIComponent(id) + '&qty=1'
             })
             .then(function (response) {
-                if (response.status === 401) {
-                    window.location.href = '/php1/login.php';
+                    if (response.status === 401) {
+                    window.location.href = (window.APP_BASE || '') + '/login.php';
                     return;
                 }
                 return response.text();
@@ -148,7 +148,7 @@ function siteInit(){
 
             var body = 'id=' + encodeURIComponent(id) + '&qty=' + encodeURIComponent(qty);
 
-            fetch('/php1/add_to_cart.php', {
+            fetch((window.APP_BASE || '') + '/add_to_cart.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: body,
@@ -156,7 +156,7 @@ function siteInit(){
             })
             .then(function (res) {
                 if (res.status === 401) {
-                    window.location.href = '/php1/login.php?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
+                    window.location.href = (window.APP_BASE || '') + '/login.php?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
                     return null;
                 }
                 return res.text();
