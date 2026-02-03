@@ -10,7 +10,11 @@ if ($base === '.' || $base === '/' ) { $base = ''; }
 function asset_path($path) {
     global $base;
     $path = ltrim($path, '/');
-    return ($base === '') ? $path : $base . '/' . $path;
+    // إذا كان التطبيق على الجذر، نرجع مسار يبدأ بشرطة مائلة ليكون مطلقاً
+    if ($base === '' || $base === '.') {
+        return '/' . $path;
+    }
+    return $base . '/' . $path;
 }
 ?>
 <!DOCTYPE html>
