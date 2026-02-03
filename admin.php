@@ -1,7 +1,7 @@
 <?php
 session_start();
-require '../includes/db.php';
-include '../includes/header.php';
+require 'includes/db.php';
+include 'includes/header.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header('Location: ../login.php');
@@ -355,5 +355,6 @@ function toggleOrderDetails(orderId) {
     }
 }
 </style>
+
 
 <?php include '../includes/footer.php'; ?>
