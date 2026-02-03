@@ -1,7 +1,12 @@
 // Simple PJAX implementation: intercept internal links, fetch page, replace .site-container
 (function(){
     function isInternalLink(link){
-        return location.host === link.host && link.pathname.indexOf('/php1') !== -1;
+        var base = window.APP_BASE || '';
+        try{
+            return location.host === link.host && link.pathname.indexOf(base) === 0;
+        }catch(e){
+            return location.host === link.host;
+        }
     }
 
     function fetchAndReplace(url, push){
